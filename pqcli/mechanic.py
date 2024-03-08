@@ -375,7 +375,7 @@ class Player(SignalMixin):
             return (random.random.randint(0, 0x3FFFFFFF) << 32) | random.random.randint(0, 0xFFFFFFFF)
 
         def _random64_below(below: int) -> int:
-                return _random64() % below
+            return _random64() % below
 
         chosen_stat: T.Optional[StatType] = None
 
@@ -609,7 +609,7 @@ class Simulation:
             self.player.win_equipment()
 
     def complete_quest(self) -> None:
-        self.player.quest_book.quest_bar.reset(50 + random.below_low(1000))
+        self.player.quest_book.quest_bar.reset(50 + random.below(100))
         if self.player.quest_book.current_quest:
             logger.info(
                 "Quest completed: %s", self.player.quest_book.current_quest
